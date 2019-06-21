@@ -3,6 +3,7 @@
 package databases
 
 import (
+	log "axeman/libs/logger"
 	"fmt"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/postgres"
@@ -13,15 +14,25 @@ import (
 
 var (
 	once sync.Once
-	db   *gorm.DB
+
+//	db   *gorm.DB
 )
 
-func GORMConn() *gorm.DB {
+// Struct type gormConn - type to deal with connection resources
+type sqlConn struct {
+	DB *gorm.DB
+}
+
+// Connection created as a singleton class along with GORM to add flexeibilty in
+// terms of SQL flavor preferences
+func SQLConn() (*sqlConn, error) {
+	conn := sqlConn{}
+	var e error
 	once.Do(func() {
 		// initialize godotenv
-		e := godotenv.Load()
+		e = godotenv.Load()
 		if e != nil {
-			fmt.Print(e)
+			log.It.WriteLog("error", e.Error(), log.It.GetTraceMsg())
 		}
 		uri := fmt.Sprintf("host=%s port=%s user=%s dbname=%s password=%s sslmode=disable",
 			os.Getenv("db_host"),
@@ -31,16 +42,16 @@ func GORMConn() *gorm.DB {
 			os.Getenv("db_pass"),
 		)
 		fmt.Println(uri)
-		conn, err := gorm.Open(os.Getenv("db_database"), uri)
-		if err != nil {
-			fmt.Print(err)
+		//conn, err := gorm.Open(os.Getenv("db_database"), uri)
+		conn.DB, e = gorm.Open(os.Getenv("db_database"), uri)
+		if e != nil {
+			log.It.WriteLog("error", e.Error(), log.It.GetTraceMsg())
 		}
-		db = conn
 	})
-	return db
+	return &conn, e
 }
 
 //  -
-func Migrate(models ...interface{}) {
-	db.Debug().AutoMigrate(models...)
+func (sc *sqlConn) Migrate(models ...interface{}) {
+	sc.DB.Debug().AutoMigrate(models...)
 }

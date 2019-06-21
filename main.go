@@ -5,6 +5,7 @@ package main
 import (
 	//"axeman/libs/logger"
 	"axeman/libs/databases"
+	log "axeman/libs/logger"
 	"axeman/models"
 	"axeman/routes"
 	"github.com/julienschmidt/httprouter"
@@ -13,9 +14,8 @@ import (
 
 // starting point...
 func main() {
-
-	db := databases.GORMConn()
-	db.Debug().AutoMigrate(&models.User{})
+	conn, _ := databases.SQLConn()
+	conn.Migrate(&models.User{})
 
 	router := httprouter.New()
 

@@ -13,6 +13,6 @@ func Renderer(res http.ResponseWriter, layout string, pageData interface{}, view
 	tpl := template.Must(template.ParseFiles(views...))
 	err := tpl.ExecuteTemplate(res, layout, pageData)
 	if err != nil {
-		log.SLog.WriteLog("error", err.Error(), log.SLog.GetTraceMsg())
+		log.It.WriteLog("error", err.Error(), log.It.GetTraceMsg())
 	}
 }
