@@ -14,8 +14,6 @@ import (
 
 var (
 	once sync.Once
-
-//	db   *gorm.DB
 )
 
 // Struct type gormConn - type to deal with connection resources
@@ -42,7 +40,6 @@ func SQLConn() (*sqlConn, error) {
 			os.Getenv("db_pass"),
 		)
 		fmt.Println(uri)
-		//conn, err := gorm.Open(os.Getenv("db_database"), uri)
 		conn.DB, e = gorm.Open(os.Getenv("db_database"), uri)
 		if e != nil {
 			log.It.WriteLog("error", e.Error(), log.It.GetTraceMsg())
@@ -51,7 +48,7 @@ func SQLConn() (*sqlConn, error) {
 	return &conn, e
 }
 
-//  -
+//  Migrate method - create tables based on models
 func (sc *sqlConn) Migrate(models ...interface{}) {
 	sc.DB.Debug().AutoMigrate(models...)
 }
