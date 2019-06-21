@@ -9,8 +9,7 @@ import (
 )
 
 // Struct type authController - authController type
-type authController struct {
-}
+type authController struct{}
 
 // AuthController function - returns an initialized pointer of authController
 func AuthController() *authController {
