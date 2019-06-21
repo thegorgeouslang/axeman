@@ -1,0 +1,25 @@
+{
+  "name": "axeman",
+  "version": "1.0.0",
+  "description": "A Golang MVC Framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thegorgeouslang/axeman.git"
+  },
+  "keywords": [
+    "Golang"
+  ],
+  "author": "James Mallon <jamesmallondev@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thegorgeouslang/axeman/issues"
+  },
+  "homepage": "https://github.com/thegorgeouslang/axeman#readme",
+  "dependencies": {
+    "bootstrap": "^4.3.1"
+  }
+}
