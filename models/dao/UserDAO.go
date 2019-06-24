@@ -18,8 +18,10 @@ var conn *databases.SqlConn
 
 // init function - data and process initialization
 func init() {
-
-	conn, _ = databases.SQLConn()
+	conn, e = databases.SQLConn()
+	if e != nil {
+		log.It.WriteLog("error", e.Error(), log.It.GetTraceMsg())
+	}
 }
 
 //
