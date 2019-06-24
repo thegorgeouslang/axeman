@@ -4,6 +4,9 @@ package controllers
 
 import (
 	"axeman/libs/layout"
+	log "axeman/libs/logger"
+	"axeman/models"
+	"axeman/models/dao"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 )
@@ -37,5 +40,19 @@ func (ic *authController) Signup(res http.ResponseWriter, req *http.Request, p h
 	layout.Renderer(res,
 		"layout",
 		struct{ PageTitle string }{"Signup"},
-		"views/layout.html", "views/header.html", "views/partials/index.html")
+		"views/layout.html", "views/header.html", "views/partials/signup.html")
+
+}
+
+// Mission method -
+func (ic *authController) SignupProcess(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
+	req.ParseForm()
+	user := models.User{Email: req.Form.Get("email"), Password: req.Form.Get("password")}
+
+	userDAO := dao.UserDAO()
+	r := userDAO.InsertUser(&user)
+	if r {
+		log.It.WriteLog("alert", "The user wasn't created", log.It.GetTraceMsg())
+	}
+	http.Redirect(res, req, "/signup", 301)
 }

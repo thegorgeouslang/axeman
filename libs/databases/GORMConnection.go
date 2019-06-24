@@ -17,14 +17,14 @@ var (
 )
 
 // Struct type gormConn - type to deal with connection resources
-type sqlConn struct {
+type SqlConn struct {
 	DB *gorm.DB
 }
 
 // Connection created as a singleton class along with GORM to add flexeibilty in
 // terms of SQL flavor preferences
-func SQLConn() (*sqlConn, error) {
-	conn := sqlConn{}
+func SQLConn() (*SqlConn, error) {
+	conn := SqlConn{}
 	var e error
 	once.Do(func() {
 		// initialize godotenv
@@ -39,7 +39,7 @@ func SQLConn() (*sqlConn, error) {
 			os.Getenv("db_name"),
 			os.Getenv("db_pass"),
 		)
-		fmt.Println(uri)
+		// fmt.Println(uri)
 		conn.DB, e = gorm.Open(os.Getenv("db_database"), uri)
 		if e != nil {
 			log.It.WriteLog("error", e.Error(), log.It.GetTraceMsg())
@@ -49,6 +49,6 @@ func SQLConn() (*sqlConn, error) {
 }
 
 //  Migrate method - create tables based on models
-func (sc *sqlConn) Migrate(models ...interface{}) {
+func (sc *SqlConn) Migrate(models ...interface{}) {
 	sc.DB.Debug().AutoMigrate(models...)
 }
