@@ -3,8 +3,8 @@
 package main
 
 import (
-	//"axeman/libs/databases"
-	//"axeman/models"
+	"axeman/libs/databases"
+	"axeman/models"
 	"axeman/routes"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
@@ -12,8 +12,8 @@ import (
 
 // starting point...
 func main() {
-	//conn, _ := databases.SQLConn()
-	//conn.Migrate(&models.User{})
+	conn, _ := databases.SQLConn()
+	conn.Migrate(&models.User{})
 
 	router := httprouter.New()
 
