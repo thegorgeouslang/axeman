@@ -4,20 +4,20 @@ package dao
 
 import (
 	"axeman/libs/databases"
+	log "axeman/libs/logger"
 	"axeman/models"
 	"sync"
 )
 
 // userDAO -
-type userDAO struct {
-	//conn *databases.SqlConn
-}
+type userDAO struct{}
 
 //
 var conn *databases.SqlConn
 
 // init function - data and process initialization
 func init() {
+	var e error
 	conn, e = databases.SQLConn()
 	if e != nil {
 		log.It.WriteLog("error", e.Error(), log.It.GetTraceMsg())
