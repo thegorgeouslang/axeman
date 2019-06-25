@@ -19,6 +19,8 @@ var (
 )
 
 // init function - data and process initialization
+// Connection created as a singleton class along with GORM to add flexeibilty in
+// terms of SQL flavor preferences
 func init() {
 	e = godotenv.Load()
 	if e != nil {
@@ -39,8 +41,7 @@ func init() {
 	db = conn
 }
 
-// Connection created as a singleton class along with GORM to add flexeibilty in
-// terms of SQL flavor preferences
+// SQLConn function - retrieves the connection object
 func SQLConn() (*gorm.DB, error) {
 	return db, e
 }
