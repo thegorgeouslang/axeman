@@ -6,10 +6,11 @@ import (
 	"github.com/jinzhu/gorm"
 )
 
-// Struct type User - User model
-type User struct {
+// Struct type Comment - Comment model
+type Comment struct {
 	gorm.Model
-	Email    string
-	Password string
-	Token    string
+	Title   string
+	Content string
+	Author  string
+	Date    string
 }

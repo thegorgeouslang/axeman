@@ -14,11 +14,7 @@ import (
 
 // starting point...
 func main() {
-	//conn, e := databases.SQLConn()
-	//if e != nil {
-	//	log.It.WriteLog("error", e.Error(), log.It.GetTraceMsg())
-	//}
-	databases.Migrate(&models.User{})
+	databases.Migrate(&models.User{}, &models.Comment{}, &models.Article{}) // creating tables
 
 	router := httprouter.New()
 
