@@ -13,3 +13,4 @@
 
 # Backup files
 *.bkp
+*.go.bkp

@@ -4,16 +4,21 @@ package main
 
 import (
 	"axeman/libs/databases"
+	//log "axeman/libs/logger"
 	"axeman/models"
 	"axeman/routes"
+	//"github.com/jinzhu/gorm"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 )
 
 // starting point...
 func main() {
-	conn, _ := databases.SQLConn()
-	conn.Migrate(&models.User{})
+	//conn, e := databases.SQLConn()
+	//if e != nil {
+	//	log.It.WriteLog("error", e.Error(), log.It.GetTraceMsg())
+	//}
+	databases.Migrate(&models.User{})
 
 	router := httprouter.New()
 

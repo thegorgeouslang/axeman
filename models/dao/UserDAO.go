@@ -6,6 +6,7 @@ import (
 	"axeman/libs/databases"
 	log "axeman/libs/logger"
 	"axeman/models"
+	"github.com/jinzhu/gorm"
 	"sync"
 )
 
@@ -13,7 +14,7 @@ import (
 type userDAO struct{}
 
 //
-var conn *databases.SqlConn
+var conn *gorm.DB
 
 // init function - data and process initialization
 func init() {
@@ -34,8 +35,8 @@ func (ud *userDAO) InsertUser(user *models.User) (res bool) {
 	var wg sync.WaitGroup
 	wg.Add(1)
 	go func() {
-		conn.DB.Create(&user)
-		res = conn.DB.NewRecord(user)
+		conn.Create(&user)
+		res = conn.NewRecord(user)
 		defer wg.Done()
 	}()
 	wg.Wait()
