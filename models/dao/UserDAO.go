@@ -35,7 +35,6 @@ func UserDAO() *userDAO {
 // InsertUser method - Stores a new user in the system
 func (ud *userDAO) InsertUser(user *models.User) (err error) {
 	var wg sync.WaitGroup
-	errChannel := make(chan error) // creates a new channel
 	wg.Add(1)
 	go func() {
 		// it creates a hashed byte slice from the user password
@@ -48,11 +47,8 @@ func (ud *userDAO) InsertUser(user *models.User) (err error) {
 				err = fmt.Errorf("The user %s wasn't created", user.Email)
 			}
 		}
-		errChannel <- err
 		defer wg.Done()
 	}()
-	err = <-errChannel
-	defer close(errChannel)
 	wg.Wait()
 	return
 }

@@ -9,7 +9,9 @@ import (
 )
 
 // Struct type authController - authController type
-type authController struct{}
+type authController struct {
+	Layout *layout.LayoutController
+}
 
 // AuthController function - returns an initialized pointer of authController
 func AuthController() *authController {
@@ -17,25 +19,25 @@ func AuthController() *authController {
 }
 
 // Auth method -
-func (ic *authController) Login(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
-	layout.Renderer(res,
+func (ac *authController) Login(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
+	ac.Layout.Renderer(res,
 		"layout",
 		struct{ PageTitle string }{"Login"},
-		"views/layout.html", "views/header.html", "views/index/index.html")
+		"views/Layout.html", "views/header.html", "views/index/index.html")
 }
 
 // About method -
-func (ic *authController) Logout(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
-	layout.Renderer(res,
+func (ac *authController) Logout(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
+	ac.Layout.Renderer(res,
 		"layout",
 		struct{ PageTitle string }{"Logout"},
-		"views/layout.html", "views/header.html", "views/index/index.html")
+		"views/Layout.html", "views/header.html", "views/index/index.html")
 }
 
 // Mission method -
-func (ic *authController) Signup(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
-	layout.Renderer(res,
+func (ac *authController) Signup(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
+	ac.Layout.Renderer(res,
 		"layout",
 		struct{ PageTitle string }{"Signup"},
-		"views/layout.html", "views/header.html", "views/auth/signup.html")
+		"views/Layout.html", "views/header.html", "views/auth/signup.html")
 }

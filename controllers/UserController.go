@@ -12,20 +12,22 @@ import (
 )
 
 // Struct type userController - userController type
-type userController struct{}
+type userController struct {
+}
 
 // UserController function - returns an initialized pointer of userController
 func UserController() *userController {
 	return &userController{}
 }
 
-// Mission method -
+// CreatUser method -
 func (uc *userController) CreateUser(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
 	req.ParseForm()
 	user := models.User{Email: req.Form.Get("email"), Password: req.Form.Get("password")}
 
 	userDAO := dao.UserDAO()
 	e := userDAO.InsertUser(&user)
+
 	fmt.Println(user)
 	if e != nil {
 		log.It.WriteLog("error", e.Error(), log.It.GetTraceMsg())

@@ -9,7 +9,7 @@ import (
 // Struct type User - User model
 type User struct {
 	gorm.Model
-	Email    string
-	Password string
-	Token    string
+	Email        string
+	Password     string
+	SessionToken string
 }

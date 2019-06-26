@@ -9,8 +9,10 @@ import (
 	"time"
 )
 
+//
 var It = *logit.Syslog
 
+//
 func init() {
 	// appending custom categories
 	It.AppendCategories(map[string][]string{
