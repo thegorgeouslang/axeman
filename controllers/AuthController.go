@@ -19,25 +19,25 @@ func AuthController() *authController {
 }
 
 // Auth method -
-func (ac *authController) Login(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
-	ac.Layout.Renderer(res,
+func (ac *authController) Login(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	ac.Layout.Renderer(w,
 		"layout",
 		struct{ PageTitle string }{"Login"},
-		"views/Layout.html", "views/header.html", "views/index/index.html")
+		"views/layout.html", "views/header.html", "views/index/index.html")
 }
 
 // About method -
-func (ac *authController) Logout(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
-	ac.Layout.Renderer(res,
+func (ac *authController) Logout(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	ac.Layout.Renderer(w,
 		"layout",
 		struct{ PageTitle string }{"Logout"},
-		"views/Layout.html", "views/header.html", "views/index/index.html")
+		"views/layout.html", "views/header.html", "views/index/index.html")
 }
 
 // Mission method -
-func (ac *authController) Signup(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
-	ac.Layout.Renderer(res,
+func (ac *authController) Signup(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	ac.Layout.Renderer(w,
 		"layout",
 		struct{ PageTitle string }{"Signup"},
-		"views/Layout.html", "views/header.html", "views/auth/signup.html")
+		"views/layout.html", "views/header.html", "views/auth/signup.html")
 }

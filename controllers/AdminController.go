@@ -19,9 +19,10 @@ func AdminController() *adminController {
 }
 
 // Admin method -
-func (ac *adminController) Index(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
-	ac.Layout.Renderer(res,
+func (ac *adminController) Index(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	//helpers.FlashMessenger().Get(w, r)
+	ac.Layout.Renderer(w,
 		"layout",
 		struct{ PageTitle string }{"Admin"},
-		"views/admin/dashboard.html", "views/header.html", "views/admin/index.html")
+		"views/admin/dashboard.html", "views/admin/header.html", "views/admin/index.html")
 }

@@ -3,6 +3,7 @@
 package controllers
 
 import (
+	"axeman/controllers/helpers"
 	"axeman/libs/layout"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
@@ -19,32 +20,37 @@ func IndexController() *indexController {
 }
 
 // Index method -
-func (ic *indexController) Index(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
-	ic.Layout.Renderer(res,
+func (ic *indexController) Index(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	helpers.FlashMessenger().Set(&w, "Hey bro, what's up?!")
+	ic.Layout.Renderer(w,
 		"layout",
 		struct{ PageTitle string }{"Index"},
-		"views/Layout.html", "views/header.html", "views/index/index.html")
+		"views/layout.html", "views/header.html", "views/index/index.html")
 }
 
 // About method -
-func (ic *indexController) About(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
-	ic.Layout.Renderer(res,
+func (ic *indexController) About(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	fm := helpers.FlashMessenger().Get(&w, r)
+	ic.Layout.Renderer(w,
 		"layout",
-		struct{ PageTitle string }{"About"},
-		"views/Layout.html", "views/header.html", "views/index/index.html")
+		struct {
+			PageTitle    string
+			FlashMessage string
+		}{"About", fm},
+		"views/layout.html", "views/header.html", "views/index/index.html")
 }
 
 // Mission method -
-func (ic *indexController) Mission(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
-	ic.Layout.Renderer(res,
+func (ic *indexController) Mission(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	ic.Layout.Renderer(w,
 		"layout",
 		struct{ PageTitle string }{"Mission"},
-		"views/Layout.html", "views/header.html", "views/index/index.html")
+		"views/layout.html", "views/header.html", "views/index/index.html")
 }
 
 // ContactUs method -
-func (ic *indexController) ContactUs(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
-	ic.Layout.Renderer(res,
+func (ic *indexController) ContactUs(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	ic.Layout.Renderer(w,
 		"layout",
 		struct{ PageTitle string }{"Contact Us"},
 		"views/layout.html", "views/header.html", "views/index/index.html")

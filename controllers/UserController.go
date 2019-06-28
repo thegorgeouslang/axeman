@@ -6,14 +6,12 @@ import (
 	log "axeman/libs/logger"
 	"axeman/models"
 	"axeman/models/dao"
-	"fmt"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 )
 
 // Struct type userController - userController type
-type userController struct {
-}
+type userController struct{}
 
 // UserController function - returns an initialized pointer of userController
 func UserController() *userController {
@@ -21,16 +19,16 @@ func UserController() *userController {
 }
 
 // CreatUser method -
-func (uc *userController) CreateUser(res http.ResponseWriter, req *http.Request, p httprouter.Params) {
-	req.ParseForm()
-	user := models.User{Email: req.Form.Get("email"), Password: req.Form.Get("password")}
+func (uc *userController) CreateUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	r.ParseForm()
+	user := models.User{Email: r.Form.Get("email"), Password: r.Form.Get("password")}
 
 	userDAO := dao.UserDAO()
 	e := userDAO.InsertUser(&user)
 
-	fmt.Println(user)
 	if e != nil {
 		log.It.WriteLog("error", e.Error(), log.It.GetTraceMsg())
 	}
-	http.Redirect(res, req, "/dashboard", 301)
+
+	http.Redirect(w, r, "/dashboard", 302)
 }
