@@ -4,12 +4,16 @@ package routes
 
 import (
 	"axeman/controllers"
+	"axeman/middlewares"
 	"github.com/julienschmidt/httprouter"
 )
 
 func GetAuthRoutes(router *httprouter.Router) {
 
-	router.GET("/login", controllers.AuthController().Login)
-	router.GET("/logout", controllers.AuthController().Logout)
-	router.GET("/signup", controllers.AuthController().Signup)
+	ac := controllers.AuthController()
+	auth := middlewares.AuthMiddleware()
+
+	router.GET("/login", auth.Check(ac.Login))
+	router.GET("/logout", auth.Check(ac.Logout))
+	router.GET("/signup", auth.Check(ac.Signup))
 }
