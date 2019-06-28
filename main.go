@@ -4,10 +4,8 @@ package main
 
 import (
 	"axeman/libs/databases"
-	//log "axeman/libs/logger"
 	"axeman/models"
 	"axeman/routes"
-	//"github.com/jinzhu/gorm"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 )
@@ -25,6 +23,6 @@ func main() {
 
 	router.ServeFiles("/static/*filepath", http.Dir("public/"))
 	router.ServeFiles("/libs/*filepath", http.Dir("node_modules/"))
-	panic(http.ListenAndServe("localhost:8080", router))
+	panic(http.ListenAndServe(":8080", router))
 
 }

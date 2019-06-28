@@ -13,7 +13,7 @@ func GetAuthRoutes(router *httprouter.Router) {
 	ac := controllers.AuthController()
 	auth := middlewares.AuthMiddleware()
 
-	router.GET("/login", auth.CheckNonLogged(ac.Login))
-	router.GET("/logout", auth.CheckLogged(ac.Logout))
-	router.GET("/signup", auth.CheckNonLogged(ac.Signup))
+	router.POST("/login", auth.CheckNonLogged(ac.Login))
+	router.POST("/logout", auth.CheckLogged(ac.Logout))
+	router.POST("/signup", auth.CheckNonLogged(ac.Signup))
 }
