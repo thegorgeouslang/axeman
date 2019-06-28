@@ -26,3 +26,11 @@ func (ac *adminController) Index(w http.ResponseWriter, r *http.Request, p httpr
 		struct{ PageTitle string }{"Admin"},
 		"views/admin/dashboard.html", "views/admin/header.html", "views/admin/index.html")
 }
+
+// ModifyUser method - implements users modifications by authorized users
+func (ac *adminController) ModifyUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	ac.Layout.Renderer(w,
+		"layout",
+		struct{ PageTitle string }{"Admin"},
+		"views/admin/dashboard.html", "views/admin/header.html", "views/admin/index.html")
+}
