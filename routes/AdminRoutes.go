@@ -14,6 +14,6 @@ func GetAdminRoutes(router *httprouter.Router) {
 	acl := middlewares.ACLMiddleware
 	auth := middlewares.AuthMiddleware()
 
-	router.GET("/dashboard", auth.Check(ac.Index))
-	router.GET("/dashboard/modify-user", auth.Check(acl.Check(ac.ModifyUser)))
+	router.GET("/dashboard", auth.CheckLogged(ac.Index))
+	router.GET("/dashboard/modify-user", auth.CheckLogged(acl.Check(ac.ModifyUser)))
 }
