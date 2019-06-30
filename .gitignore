@@ -17,3 +17,9 @@
 
 # environment file
 .env
+
+# node dependencies
+node_modules/
+
+# golang dependencies
+vendor/
