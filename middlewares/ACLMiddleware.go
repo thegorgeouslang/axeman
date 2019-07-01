@@ -19,7 +19,7 @@ func init() {
 }
 
 // Check method - check user authorization
-func (rm *aclMiddleware) Check(next httprouter.Handle) httprouter.Handle {
+func (this *aclMiddleware) Check(next httprouter.Handle) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		fmt.Println("Checking user authorization...")
 		next(w, r, p)

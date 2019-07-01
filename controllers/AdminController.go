@@ -3,14 +3,14 @@
 package controllers
 
 import (
-	"axeman/libs/layout"
+	l "axeman/libs/layout"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
 )
 
 // Struct type adminController - adminController type
 type adminController struct {
-	Layout *layout.LayoutController
+	layout l.LayoutHelper
 }
 
 // AdminController function - returns an initialized pointer of adminController
@@ -19,18 +19,18 @@ func AdminController() *adminController {
 }
 
 // Admin method -
-func (ac *adminController) Index(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+func (this *adminController) Index(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	//helpers.FlashMessenger().Get(w, r)
-	ac.Layout.Renderer(w,
+	this.layout.Render(w,
 		"layout",
 		struct{ PageTitle string }{"Admin"},
-		"views/admin/dashboard.html", "views/admin/header.html", "views/admin/index.html")
+		"templates/admin/dashboard.html", "templates/admin/header.html", "templates/admin/index.html")
 }
 
 // ModifyUser method - implements users modifications by authorized users
-func (ac *adminController) ModifyUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	ac.Layout.Renderer(w,
+func (this *adminController) ModifyUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+	this.layout.Render(w,
 		"layout",
 		struct{ PageTitle string }{"Admin"},
-		"views/admin/dashboard.html", "views/admin/header.html", "views/admin/index.html")
+		"templates/admin/dashboard.html", "templates/admin/header.html", "templates/admin/index.html")
 }

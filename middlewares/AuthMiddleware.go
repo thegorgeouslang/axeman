@@ -17,7 +17,7 @@ func AuthMiddleware() *authMiddleware {
 }
 
 // Check method - check user authorization
-func (am *authMiddleware) CheckNonLogged(next httprouter.Handle) httprouter.Handle {
+func (this *authMiddleware) CheckNonLogged(next httprouter.Handle) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		fmt.Println("Checking if guest")
 		next(w, r, p)
@@ -25,7 +25,7 @@ func (am *authMiddleware) CheckNonLogged(next httprouter.Handle) httprouter.Hand
 }
 
 // Check method - check user authorization
-func (am *authMiddleware) CheckLogged(next httprouter.Handle) httprouter.Handle {
+func (this *authMiddleware) CheckLogged(next httprouter.Handle) httprouter.Handle {
 	return func(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 		fmt.Println("Checking if logged user")
 		next(w, r, p)

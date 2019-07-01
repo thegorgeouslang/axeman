@@ -19,7 +19,7 @@ func UserController() *userController {
 }
 
 // CreatUser method -
-func (uc *userController) CreateUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
+func (this *userController) CreateUser(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
 	r.ParseForm()
 	user := models.User{Email: r.Form.Get("email"), Password: r.Form.Get("password")}
 

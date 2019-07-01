@@ -33,7 +33,7 @@ func UserDAO() *userDAO {
 }
 
 // InsertUser method - Stores a new user in the system
-func (ud *userDAO) InsertUser(user *models.User) (err error) {
+func (this *userDAO) InsertUser(user *models.User) (err error) {
 	var wg sync.WaitGroup
 	wg.Add(1)
 	go func() {

@@ -18,7 +18,7 @@ func FlashMessenger() *flashMessenger {
 }
 
 //  Set function - it creates the cookie and set the flash message
-func (fm *flashMessenger) Set(w *http.ResponseWriter, message string) {
+func (this *flashMessenger) Set(w *http.ResponseWriter, message string) {
 	c := http.Cookie{ // creates the cookie
 		Name:  "flashmessenger",
 		Value: base64.URLEncoding.EncodeToString([]byte(message)),
@@ -27,7 +27,7 @@ func (fm *flashMessenger) Set(w *http.ResponseWriter, message string) {
 }
 
 // Get method - it prints the message stored in the cookie
-func (fm *flashMessenger) Get(w *http.ResponseWriter, r *http.Request) string {
+func (this *flashMessenger) Get(w *http.ResponseWriter, r *http.Request) string {
 	c, err := r.Cookie("flashmessenger")
 	if err != nil { // check for errors - check if the cookie with the specific name is setted
 		log.It.WriteLog("error", err.Error(), log.It.GetTraceMsg())
