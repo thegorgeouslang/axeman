@@ -23,7 +23,7 @@ func (this *authController) Login(w http.ResponseWriter, r *http.Request, p http
 	this.layout.Render(w,
 		"layout",
 		struct{ PageTitle string }{"Login"},
-		"templates/layout.gohtml", "templates/header.gohtml", "templates/index/index.gohtml")
+		"templates/layout.gohtml", "templates/index/index.gohtml")
 }
 
 // About method -
@@ -31,7 +31,7 @@ func (this *authController) Logout(w http.ResponseWriter, r *http.Request, p htt
 	this.layout.Render(w,
 		"layout",
 		struct{ PageTitle string }{"Logout"},
-		"templates/layout.gohtml", "templates/header.gohtml", "templates/index/index.gohtml")
+		"templates/layout.gohtml", "templates/index/index.gohtml")
 }
 
 // Mission method -
@@ -39,5 +39,5 @@ func (this *authController) Signup(w http.ResponseWriter, r *http.Request, p htt
 	this.layout.Render(w,
 		"layout",
 		struct{ PageTitle string }{"Signup"},
-		"templates/layout.gohtml", "templates/header.gohtml", "templates/auth/signup.gohtml")
+		"templates/layout.gohtml", "templates/auth/signup.gohtml")
 }

@@ -24,7 +24,7 @@ func (this *adminController) Index(w http.ResponseWriter, r *http.Request, p htt
 	this.layout.Render(w,
 		"layout",
 		struct{ PageTitle string }{"Admin"},
-		"templates/admin/dashboard.gohtml", "templates/admin/header.gohtml", "templates/admin/index.gohtml")
+		"templates/admin/dashboard.gohtml", "templates/admin/index.gohtml")
 }
 
 // ModifyUser method - implements users modifications by authorized users
@@ -32,5 +32,5 @@ func (this *adminController) ModifyUser(w http.ResponseWriter, r *http.Request, 
 	this.layout.Render(w,
 		"layout",
 		struct{ PageTitle string }{"Admin"},
-		"templates/admin/dashboard.gohtml", "templates/admin/header.gohtml", "templates/admin/index.gohtml")
+		"templates/admin/dashboard.gohtml", "templates/admin/index.gohtml")
 }
