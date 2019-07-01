@@ -1,5 +1,5 @@
-* linguistic-vendored
-*.go linguistic-vendored=false
+* linguist-vendored
+*.go linguist-vendored=false
 # folders
 #templates/*     linguistic-vendored
 #public/*        linguistic-vendored
