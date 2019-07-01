@@ -3,7 +3,7 @@
 package controllers
 
 import (
-	"axeman/controllers/helpers"
+	. "axeman/controllers/helpers"
 	l "axeman/libs/layout"
 	"github.com/julienschmidt/httprouter"
 	"net/http"
@@ -21,7 +21,7 @@ func IndexController() *indexController {
 
 // Index method -
 func (this *indexController) Index(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	helpers.FlashMessenger().Set(&w, "Hey bro, what's up?!")
+	FlashMessenger().Set(&w, "Hey bro, what's up?!")
 	this.layout.Render(w,
 		"layout",
 		struct{ PageTitle string }{"Index"},
@@ -30,7 +30,7 @@ func (this *indexController) Index(w http.ResponseWriter, r *http.Request, p htt
 
 // About method -
 func (this *indexController) About(w http.ResponseWriter, r *http.Request, p httprouter.Params) {
-	fm := helpers.FlashMessenger().Get(&w, r)
+	fm := FlashMessenger().Get(&w, r)
 	this.layout.Render(w,
 		"layout",
 		struct {

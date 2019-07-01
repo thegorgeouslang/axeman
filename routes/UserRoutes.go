@@ -3,11 +3,11 @@
 package routes
 
 import (
-	"axeman/controllers"
+	. "axeman/controllers"
 	"github.com/julienschmidt/httprouter"
 )
 
 func GetUserRoutes(router *httprouter.Router) {
 
-	router.POST("/user/create", controllers.UserController().CreateUser)
+	router.POST("/user/create", UserController().CreateUser)
 }

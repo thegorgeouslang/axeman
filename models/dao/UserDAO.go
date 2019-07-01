@@ -3,9 +3,9 @@
 package dao
 
 import (
-	"axeman/libs/databases"
+	. "axeman/libs/databases"
 	log "axeman/libs/logger"
-	"axeman/models"
+	. "axeman/models"
 	"fmt"
 	"github.com/jinzhu/gorm"
 	"golang.org/x/crypto/bcrypt"
@@ -21,7 +21,7 @@ var conn *gorm.DB
 // init function - data and process initialization
 func init() {
 	var e error
-	conn, e = databases.SQLConn()
+	conn, e = SQLConn()
 	if e != nil {
 		log.It.WriteLog("error", e.Error(), log.It.GetTraceMsg())
 	}
@@ -33,7 +33,7 @@ func UserDAO() *userDAO {
 }
 
 // InsertUser method - Stores a new user in the system
-func (this *userDAO) InsertUser(user *models.User) (err error) {
+func (this *userDAO) InsertUser(user *User) (err error) {
 	var wg sync.WaitGroup
 	wg.Add(1)
 	go func() {

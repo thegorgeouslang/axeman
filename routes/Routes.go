@@ -3,16 +3,16 @@
 package routes
 
 import (
-	"axeman/controllers"
+	. "axeman/controllers"
 	"github.com/julienschmidt/httprouter"
 )
 
 // GetRoutes function -
 func GetRoutes(router *httprouter.Router) {
 
-	router.GET("/", controllers.IndexController().Index)
-	router.GET("/home", controllers.IndexController().Index)
-	router.GET("/about", controllers.IndexController().About)
-	router.GET("/mission", controllers.IndexController().Mission)
-	router.GET("/contactus", controllers.IndexController().ContactUs)
+	router.GET("/", IndexController().Index)
+	router.GET("/home", IndexController().Index)
+	router.GET("/about", IndexController().About)
+	router.GET("/mission", IndexController().Mission)
+	router.GET("/contactus", IndexController().ContactUs)
 }
