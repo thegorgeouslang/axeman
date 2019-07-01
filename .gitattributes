@@ -1,9 +1,11 @@
 # folders
+* linguistic-vendored # F#C% 077
 public/*        linguistic-vendored
 node_modules/*  linguistic-vendored
 templates/*     linguistic-vendored
 
 # files
+*.go linguistic-vendored=false
 *.md            text
 LICENSE         text
 package.json    text
