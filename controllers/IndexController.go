@@ -25,7 +25,7 @@ func (this *indexController) Index(w http.ResponseWriter, r *http.Request, p htt
 	this.layout.Render(w,
 		"layout",
 		struct{ PageTitle string }{"Index"},
-		"templates/layout.html", "templates/header.html", "templates/index/index.html")
+		"templates/layout.gohtml", "templates/header.gohtml", "templates/index/index.gohtml")
 }
 
 // About method -
@@ -37,7 +37,7 @@ func (this *indexController) About(w http.ResponseWriter, r *http.Request, p htt
 			PageTitle    string
 			FlashMessage string
 		}{"About", fm},
-		"templates/layout.html", "templates/header.html", "templates/index/index.html")
+		"templates/layout.gohtml", "templates/header.gohtml", "templates/index/index.gohtml")
 }
 
 // Mission method -
@@ -45,7 +45,7 @@ func (this *indexController) Mission(w http.ResponseWriter, r *http.Request, p h
 	this.layout.Render(w,
 		"layout",
 		struct{ PageTitle string }{"Mission"},
-		"templates/layout.html", "templates/header.html", "templates/index/index.html")
+		"templates/layout.gohtml", "templates/header.gohtml", "templates/index/index.gohtml")
 }
 
 // ContactUs method -
@@ -53,5 +53,5 @@ func (this *indexController) ContactUs(w http.ResponseWriter, r *http.Request, p
 	this.layout.Render(w,
 		"layout",
 		struct{ PageTitle string }{"Contact Us"},
-		"templates/layout.html", "templates/header.html", "templates/index/index.html")
+		"templates/layout.gohtml", "templates/header.gohtml", "templates/index/index.gohtml")
 }

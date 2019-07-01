@@ -1,19 +1,25 @@
 {{ define "layout" }} 
 
  <!doctype html>
-<html lang="en">
-   <head>
-           <meta charset="utf-8">
-           <meta name="author" content="James Mallon">
-           <meta name="contact" content="thegorgeouslang@gmail.com">
-           <meta name="reply-to" content="thegorgeouslang@gmail.com">
-           <meta name="copyright" content="MIT">
-           <meta name="keywords" content="James Mallon,HTML,CSS,XML,JavaScript,PHP7.2,PHP,Laravel,Laravel 5.7,SASS,Bootstrap,jQuery,jQuery-UI,ReactJs,React-js,React">
-           <meta name="viewport" content="width=device-width, initial-scale=1">
-           {{ template "header"}}
+<html lang="en
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="James Mallon">
+        <meta name="contact" content="thegorgeouslang@gmail.com">
+        <meta name="reply-to" content="thegorgeouslang@gmail.com">
+        <meta name="copyright" content="MIT">
+        <meta name="keywords" content="James Mallon,HTML,CSS,XML,JavaScript,PHP7.2,PHP,Laravel,Laravel 5.7,SASS,Bootstrap,jQuery,jQuery-UI,ReactJs,React-js,React">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- stylesheet -->
+        <link rel="stylesheet" type="text/css" href="/libs/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" type="text/css" href="/static/css/dashboard.css" />
+        <!-- javascript -->
+        <script type="text/javascript" src="/libs/jquery/dist/jquery.slim.min.js"></script>
+        <script type="text/javascript" src="/libs/popper.js/dist/popper.min.js"></script>
+        <script type="text/javascript" src="/libs/bootstrap/dist/js/bootstrap.min.js"></script>
         <title>{{ .PageTitle }}</title>
-      <!-- Favicon -->
-      <!-- Styles -->
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="/static/images/favicon.png">
    </head>
    <body>
       <div id="app">
