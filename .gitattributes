@@ -1,5 +1,13 @@
 # folders
-* linguistic-vendored
-*.go linguistic-vendored=false
+templates/*     linguistic-vendored
+public/*        linguistic-vendored
+# files
+*.go            linguistic-vendored=false
+.env            text
+.env*           text
+*.json          linguistic-vendored
+Gopkg*          text 
+LICENSE         text
+*.md            text
 
 
