@@ -1,18 +1,5 @@
 # folders
-* linguistic-vendored # F#C% 077
-public/*        linguistic-vendored
-node_modules/*  linguistic-vendored
-templates/*     linguistic-vendored
-
-# files
+* linguistic-vendored
 *.go linguistic-vendored=false
-*.md            text
-LICENSE         text
-package.json    text
-Gopkg*          text
-.env            text
-.env.sample     text
-.gitattributes  export-ignore
-.gitignore      export-ignore
 
 
