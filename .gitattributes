@@ -2,7 +2,7 @@
 templates/*     linguistic-vendored
 public/*        linguistic-vendored
 # files
-*.go            linguistic-vendored=false
+#*.go            linguistic-vendored=false
 .env            text
 .env*           text
 *.json          linguistic-vendored
